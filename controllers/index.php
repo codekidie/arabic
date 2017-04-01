@@ -14,10 +14,14 @@ if (isset($_POST['adduser'])) {
      $id = R::store( $user );
      if ($id) {
        $_SESSION['prompt_login'] = "User Added Success!";
+        header('Location: index.php');
+        exit();
      }else{
        $_SESSION['prompt_login'] = "Something Went Wrong Please Try Again!";
-
+        header('Location: index.php');
+        exit();
      }
+     
 }
 
 if (isset($_POST['addevent'])) {
@@ -28,8 +32,12 @@ if (isset($_POST['addevent'])) {
      $id = R::store( $events );
      if ($id) {
        $_SESSION['prompt_event'] = "Event Added Success!";
+       header('Location: index.php');
+       exit();
      }else{
        $_SESSION['prompt_event'] = "Something Went Wrong Please Try Again!";
-
+       header('Location: index.php');
+      exit();
      }
+      
 }

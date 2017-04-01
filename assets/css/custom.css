@@ -10,3 +10,13 @@ padding: 10px 40px 60px;
 margin: 10px 0px 60px;
 border: 1px solid GREY;
 }
+
+
+button{
+  padding: 8px 20px;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+

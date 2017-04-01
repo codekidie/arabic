@@ -1,8 +1,5 @@
 <?php 
     require_once("layouts/header.php");   
-    include("rb.php"); 
-    require_once("con.php");
-
 
     if (isset($_POST['submit'])) {
          $contact = R::dispense( 'contact' );

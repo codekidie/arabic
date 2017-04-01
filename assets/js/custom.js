@@ -26,8 +26,6 @@ function saveuser()
       url: baseUrl+"ajax.php?save_userid="+studentid+"&firstname="+firstname+"&middlename="+middlename+"&lastname="+lastname+"&role="+role+"&username="+username+"&password="+password,
      }).done(function(data) {
         $('#student').html(data);
-        $('#tb1').DataTable();
-
         toastr.success('User Success Edited');
     });
 }
@@ -64,24 +62,44 @@ function saveevent()
 
 function deleteuser(id)
 {
-    $.ajax({
-      url: baseUrl+"ajax.php?delete_userid="+id,
-     }).done(function(data) {
-        $('#student').html(data);
-        $('#tb1').DataTable();
-        toastr.success('User Successfully Deleted');
-    });
+    $.confirm({
+        title: 'Are You Sure You Want To Delete?',
+        content: '',
+        buttons: {
+            confirm: function () {
+                  $.ajax({
+                    url: baseUrl+"ajax.php?delete_userid="+id,
+                   }).done(function(data) {
+                      $('#student').html(data);
+                      toastr.success('User Successfully Deleted');
+                  });
+            },
+            cancel: function () {
+                $.alert('Canceled!');
+            },
+        }
+    }); 
 }
 
 function deleteevent(id)
 {
-    $.ajax({
-      url: baseUrl+"ajax.php?delete_eventid="+id,
-     }).done(function(data) {
-        $('#events_data').html(data);
-        $('#tb2').DataTable();
-        toastr.success('Event Successfully Deleted');
-    });
+    $.confirm({
+        title: 'Are You Sure You Want To Delete?',
+        content: '',
+        buttons: {
+            confirm: function () {
+                  $.ajax({
+                    url: baseUrl+"ajax.php?delete_eventid="+id,
+                   }).done(function(data) {
+                      $('#events_data').html(data);
+                      toastr.success('Event Successfully Deleted');
+                  });
+            },
+            cancel: function () {
+                $.alert('Canceled!');
+            },
+        }
+    }); 
 }
 
 // Start Subject Data
@@ -97,28 +115,38 @@ $('#addsubject').click(function(e){
       url: baseUrl+"ajax.php?subject_student_id="+subject_student_id+"&subject_faculty_id="+subject_faculty_id+"&subject_description="+subject_description+"&subjectname="+subjectname+"&subjectcode="+subjectcode,
      }).done(function(data) {
         $('#subjectdata').html(data);
-        $('#tb0').DataTable();
         toastr.success('Subject Successfully Added');
     });
-
+     
 });
     
 $.ajax({
   url: baseUrl+"ajax.php?subject_student_id=none",
  }).done(function(data) {
     $('#subjectdata').html(data);
-    $('#tb0').DataTable();
+      $('#tb0').DataTable();
+
 });
 
 function deletesubject(id)
 {
-    $.ajax({
-      url: baseUrl+"ajax.php?delete_subjectid="+id,
-     }).done(function(data) {
-        $('#subjectdata').html(data);
-        $('#tb0').DataTable();
-        toastr.success('Subject Successfully Deleted');
-    });
+      $.confirm({
+          title: 'Are You Sure You Want To Delete?',
+          content: '',
+          buttons: {
+              confirm: function () {
+                    $.ajax({
+                      url: baseUrl+"ajax.php?delete_subjectid="+id,
+                     }).done(function(data) {
+                        $('#subjectdata').html(data);
+                        toastr.success('Subject Successfully Deleted');
+                    });
+              },
+              cancel: function () {
+                  $.alert('Canceled!');
+              },
+          }
+      });
 }
 
 
@@ -147,11 +175,33 @@ function savesubject()
       url: baseUrl+"ajax.php?modalsubjectid="+subjectid+"&modalsubjectcode="+subjectcode+"&modalsubjectname="+subjectname+"&modalsubject_description="+subject_description+"&modalsubject_student_id="+subject_student_id+"&modalsubject_faculty_id="+subject_faculty_id,
      }).done(function(data) {
         $('#subjectdata').html(data);
-        $('#tb0').DataTable();
         toastr.success('Subject Success Edited');
     });
 }
 
+
+function deleteGrade(id)
+{
+
+   $.confirm({
+          title: 'Are You Sure You Want To Delete?',
+          content: '',
+          buttons: {
+              confirm: function () {
+                    $.ajax({
+                      url: baseUrl+"ajax.php?delete_gradeid="+id,
+                     }).done(function(data) {
+                        $('#grade_wrapper').html(data);
+                        toastr.success('Grade Successfully Deleted');
+                    });
+              },
+              cancel: function () {
+                  $.alert('Canceled!');
+              },
+          }
+      }); 
+   
+}
  
 
 $(document).ready(function(){ 
@@ -172,8 +222,16 @@ $(document).ready(function(){
         }
     });   
 
-     $('#tb0').DataTable();
      $('#tb1').DataTable();
      $('#tb2').DataTable();
-
+    
+     // Start Translator Code
+     $('#translator').click(function(){
+      var english = $('#english').val();
+        $.ajax({
+          url: baseUrl+"lang.php?eng="+english,
+         }).done(function(data) {
+            $('#arabic').val(data);
+        });
+     });
 });

@@ -31,8 +31,8 @@ ob_start();
 ================================================== -->
   <body style="background: #fff !important">
     <?php 
-      require_once("rb.php"); 
-      require_once("con.php");
+      require_once("layouts/rb.php"); 
+      require_once("layouts/con.php");
 
       if (isset($_POST['submit'])) {
          $username = $_POST['username'];
@@ -45,6 +45,7 @@ ob_start();
           foreach ($users as $u) {
             $_SESSION['username'] =  $u['username'];
             $_SESSION['role']     =  $u['role'];
+            $_SESSION['id']       =  $u['id'];
           }
           header('Location: index.php');
            exit();

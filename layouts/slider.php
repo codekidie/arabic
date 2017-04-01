@@ -9,7 +9,7 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img class="first-slide" src="http://www.trainingmagazine.ae/wp-content/uploads/2014/07/arabic-girl-class.jpg" alt="First slide">
+          <img class="first-slide" src="./assets/img/arabic-girl-class.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>Example headline.</h1>
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="item">
-          <img class="second-slide" src="http://excellencenter.org/wp-content/uploads/2014/10/IMG_9828-%E2%80%AB%E2%80%AC-900x565.jpg" alt="Second slide">
+          <img class="second-slide" src="./assets/img/2ndslider.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>Another example headline.</h1>
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="item">
-          <img class="third-slide" src="http://www.crossmap.com/uploads/images/0/50/5025.jpg" alt="Third slide">
+          <img class="third-slide" src="./assets/img/3.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>One more for good measure.</h1>
